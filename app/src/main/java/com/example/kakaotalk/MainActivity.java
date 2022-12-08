@@ -23,7 +23,6 @@ public class MainActivity extends AppCompatActivity {
     private profile profile;
     private chat chat;
     private settings settings;
-    Button button;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -74,8 +73,7 @@ public class MainActivity extends AppCompatActivity {
             });
         }*/
 
-
-        button = findViewById(R.id.my_profile);
+        /*
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -85,7 +83,7 @@ public class MainActivity extends AppCompatActivity {
                 ActivityOptions activityOptions = ActivityOptions.makeCustomAnimation(v.getContext(),R.anim.fromdown,R.anim.toup);
                 startActivity(intent,activityOptions.toBundle());
             }
-        });
+        });*/
     }
 
     private void setFrag(int n)

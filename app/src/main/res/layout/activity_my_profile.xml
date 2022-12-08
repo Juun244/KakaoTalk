@@ -31,8 +31,18 @@
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="170dp"
-        android:text="myName"
+        android:text="@string/name"
         android:textSize="15sp" />
+
+    <TextView
+        android:id="@+id/profile_text2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="140dp"
+        android:text="@string/message"
+        android:textSize="12sp" />
 
     <ImageButton
         android:id="@+id/chatbtn"
