@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">KakaoTalk</string>
+    <string name="chatbtn">1:1채팅</string>
+    <string name="setbtn">프로필 편집</string>
 </resources>

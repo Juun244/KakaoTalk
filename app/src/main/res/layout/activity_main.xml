@@ -7,6 +7,11 @@
     android:orientation="vertical"
     tools:context=".MainActivity">
 
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="my_profile"
+        android:id="@+id/my_profile"/>
     <FrameLayout
         android:id="@+id/frameLayout"
         android:layout_width="match_parent"
