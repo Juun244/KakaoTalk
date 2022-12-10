@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="70dp"
+    android:orientation="horizontal">
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:layout_margin="10dp"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:id="@+id/chatItem_imageview"
+        android:src="@drawable/default_profile" />
+
+    <TextView
+        android:id="@+id/chatItem_textview"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/chatItem_imageview"
+        android:layout_toRightOf="@+id/chatItem_imageview"
+        android:text="user_name"
+        android:textSize="18dp"/>
+
+    <TextView
+        android:id="@+id/chatItem_textview2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@+id/chatItem_imageview"
+        android:layout_below="@+id/chatItem_textview"
+        android:layout_marginTop="5dp"
+        android:text="recently received message"
+        android:textSize="15dp"/>
+
+    <TextView
+        android:id="@+id/chatItem_textview3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/chatItem_imageview"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="10dp"
+        android:text="MM/DD"/>
+
+    <ImageView
+        android:id="@+id/chatItem_alarm"
+        android:src="@drawable/default_profile"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_alignParentRight="true"
+        android:layout_alignTop="@+id/chatItem_textview2"
+        android:layout_marginRight="10dp"
+        android:text="1"
+        android:visibility="invisible"/>
+
+</RelativeLayout>
