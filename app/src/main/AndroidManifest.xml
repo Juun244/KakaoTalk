@@ -25,7 +25,8 @@
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
-        <activity android:name=".myProfileActivity"/>
+        <activity android:name=".myProfileActivity"></activity>
+        <activity android:name=".ChatSearchActivity"></activity>
     </application>
 
 </manifest>

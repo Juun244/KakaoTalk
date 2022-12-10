@@ -9,6 +9,7 @@ public class Person {
         this.text = text;
     }
 
+
     public String getName() {
         return name;
     }

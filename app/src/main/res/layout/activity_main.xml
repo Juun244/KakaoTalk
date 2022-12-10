@@ -7,6 +7,9 @@
     android:orientation="vertical"
     tools:context=".MainActivity">
 
+    <include layout="@layout/toolbar"></include>
+
+
     <FrameLayout
         android:id="@+id/frameLayout"
         android:layout_width="match_parent"
@@ -14,6 +17,7 @@
         android:layout_weight="12">
 
     </FrameLayout>
+
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottom_navi"
         android:layout_width="match_parent"
