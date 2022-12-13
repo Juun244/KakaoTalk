@@ -61,7 +61,7 @@ public class ChatAdapter extends RecyclerView.Adapter<ChatAdapter.ViewHolder> {
         public void setItem(Person item) {
             textView.setText(item.getName());
             textView2.setText(item.getText());
-            textView3.setText(item.getDateText());
+            textView3.setText(item.getBirth());
         }
     }
 

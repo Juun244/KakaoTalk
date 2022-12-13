@@ -8,22 +8,23 @@
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="5sp"
         app:cardBackgroundColor="#FFFFFFFF"
-        app:cardCornerRadius="10dp"
-        app:cardElevation="5dp"
-        app:cardUseCompatPadding="true">
+        app:cardCornerRadius="5dp"
+        app:cardElevation="5dp">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal">
+
             <ImageView
-                android:layout_width="80dp"
-                android:layout_height="80dp"
                 android:id="@+id/imageView"
-                android:padding="3dp"
+                android:layout_width="60sp"
+                android:layout_height="60sp"
                 android:background="@drawable/roundcorners"
-                android:src="@mipmap/ic_launcher"/>
+                android:padding="3dp"
+                android:src="@drawable/default_profile" />
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -35,13 +36,13 @@
                     android:layout_height="wrap_content"
                     android:id="@+id/textView"
                     android:text="name"
-                    android:textSize="30sp"/>
+                    android:textSize="20sp"/>
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:id="@+id/textView2"
                     android:text="text"
-                    android:textSize="25sp"/>
+                    android:textSize="15sp"/>
 
             </LinearLayout>
         </LinearLayout>

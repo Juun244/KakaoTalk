@@ -16,9 +16,12 @@ import android.view.MenuItem;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 public class MainActivity extends AppCompatActivity {
-
     private BottomNavigationView bottomNavigationView; // 바텀 네비게이션 뷰
     private FragmentManager fm;
     private FragmentTransaction ft;
@@ -34,6 +37,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+
         toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         actionBar = getSupportActionBar();
@@ -47,15 +51,15 @@ public class MainActivity extends AppCompatActivity {
                     @Override
                     public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
                         switch (menuItem.getItemId()) {
-                            case R.id.action_profile:
+                            case R.id.action_profile: //profile 버튼을 눌렀을 때
                                 getSupportActionBar().setTitle("친구");
                                 setFrag(0);
                                 break;
-                            case R.id.action_chat:
+                            case R.id.action_chat: //chat 버튼을 눌렀을 때
                                 getSupportActionBar().setTitle("채팅");
                                 setFrag(1);
                                 break;
-                            case R.id.action_setting:
+                            case R.id.action_setting: //Setting 버튼을 눌렀을 때
                                 getSupportActionBar().setTitle("설정");
                                 setFrag(2);
                                 break;
@@ -66,10 +70,9 @@ public class MainActivity extends AppCompatActivity {
                 }
         );
 
-
-        profile = new profile();
-        chat = new chat();
-        settings = new settings();
+        profile = new profile(); // profile.java 객체 가져옴
+        chat = new chat(); //chat.java 객체 가져옴
+        settings = new settings(); //settings.java 객체 가져옴
         setFrag(0);
 
 
@@ -91,25 +94,23 @@ public class MainActivity extends AppCompatActivity {
 
     private void setFrag(int n)
     {
-        fm = getSupportFragmentManager();
+        fm = getSupportFragmentManager(); //fragment 관리 매니저 객체
         ft= fm.beginTransaction();
-        switch (n)
-        {
+        switch (n) {
             case 0:
-                ft.replace(R.id.frameLayout,profile);
+                ft.replace(R.id.frameLayout, profile); //setFrag(0)일 때 frameLayout 자리에 profile.java 호출
                 ft.commit();
                 break;
 
             case 1:
-                ft.replace(R.id.frameLayout,chat);
+                ft.replace(R.id.frameLayout, chat); //setFrag(1)일 때 frameLayout 자리에 chat.java 호출
                 ft.commit();
                 break;
 
             case 2:
-                ft.replace(R.id.frameLayout,settings);
+                ft.replace(R.id.frameLayout, settings); //setFrag(2)일 때 frameLayout 자리에 settings.java 호출
                 ft.commit();
                 break;
-
 
         }
     }
@@ -132,6 +133,7 @@ public class MainActivity extends AppCompatActivity {
                 //새 창이 위로 올라오는 애니메이션
                 ActivityOptions activityOptions = ActivityOptions.makeCustomAnimation(getApplicationContext(),R.anim.fromdown,R.anim.toup);
                 startActivity(new Intent(this, ChatSearchActivity.class), activityOptions.toBundle());
+                //chatsearchactivity.java 호출
                 return true;
         }
         return super.onOptionsItemSelected(item);

@@ -15,15 +15,22 @@ public class ChatSearchActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate (savedInstanceState);
-        setContentView (R.layout.activity_search);
+        setContentView (R.layout.activity_search); //호출시 activity_search.xml을 띄움
 
         Button backBtn = (Button) findViewById(R.id.backBtn);
         backBtn.setOnClickListener(new View.OnClickListener() {
+            // activity_search.xml에 있는 취소 버튼이 눌렸을 때
             @Override
             public void onClick(View view) {
-                finish();
+                finish(); //finish()함수 호출 (finish()함수 : 창 종료)
             }
         });
+
+        /**
+
+        activity_search에 관한 코드 짜면 되는 곳
+
+        **/
 
         /*
         Toolbar toolbar = findViewById (R.id.toolbar);

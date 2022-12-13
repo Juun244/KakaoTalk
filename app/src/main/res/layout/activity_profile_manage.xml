@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/default_background">
+
+    <ImageButton
+        android:id="@+id/back_btn"
+        android:layout_width="88dp"
+        android:layout_height="88dp"
+        android:background="@android:color/transparent"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:src="@drawable/back_icon" />
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/profile_img"
+        android:layout_width="96dp"
+        android:layout_height="96dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="211dp"
+        android:src="@drawable/default_profile" />
+
+    <ImageButton
+        android:id="@+id/set_image_btn"
+        android:layout_width="27dp"
+        android:layout_height="27dp"
+        android:layout_alignParentBottom="true"
+        android:layout_toRightOf="@+id/profile_img"
+        android:layout_marginBottom="212dp"
+        android:adjustViewBounds="true"
+        android:background="@android:color/transparent"
+        android:scaleType="fitCenter"
+        android:src="@drawable/pencil_icon"
+        android:visibility="visible" />
+
+    <RelativeLayout
+        android:layout_width="250dp"
+        android:layout_height="150dp"
+        android:layout_above="@+id/set_backgr_btn"
+        android:layout_alignBaseline="@+id/profile_img"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="5dp">
+
+        <TextView
+            android:layout_centerHorizontal="true"
+            android:id="@+id/name_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="@string/name"
+            android:textSize="15sp" />
+
+        <ImageButton
+            android:id="@+id/set_name_btn"
+            android:layout_width="21dp"
+            android:layout_height="20dp"
+            android:layout_toRightOf="@id/name_text"
+            android:layout_marginTop="10dp"
+            android:layout_centerHorizontal="true"
+            android:background="@android:color/transparent"
+            android:layout_marginLeft="5sp"
+            android:scaleType="fitCenter"
+            android:src="@drawable/pencil_icon"
+            android:visibility="visible" />
+
+        <TextView
+            android:layout_marginTop="10dp"
+            android:id="@+id/state_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/message"
+            android:layout_below="@+id/name_text"
+            android:layout_centerHorizontal="true"
+            android:textSize="12sp" />
+
+        <ImageButton
+            android:id="@+id/set_state_btn"
+            android:layout_width="18dp"
+            android:layout_height="17dp"
+            android:layout_toRightOf="@id/state_text"
+            android:layout_marginTop="10dp"
+            android:background="@android:color/transparent"
+            android:scaleType="fitCenter"
+            android:layout_marginLeft="5sp"
+            android:layout_below="@+id/name_text"
+            android:src="@drawable/pencil_icon"
+            android:visibility="visible" />
+
+    </RelativeLayout>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginLeft="100dp"
+        android:textSize="15sp"
+        android:id="@+id/set_backgr_btn"
+        android:background="@android:color/transparent"
+        android:text="배경 설정"
+        android:textStyle="bold"/>
+
+    <Button
+        android:id="@+id/save_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:background="@android:color/transparent"
+        android:layout_marginTop="17sp"
+        android:text="적용"
+        android:textSize="20sp"
+        android:textStyle="bold" />
+
+
+</RelativeLayout>

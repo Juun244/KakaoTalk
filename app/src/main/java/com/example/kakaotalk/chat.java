@@ -27,14 +27,7 @@ public class chat extends Fragment {
         recyclerView.setLayoutManager(layoutManager);
 
         ChatAdapter adapter = new ChatAdapter();
-        adapter.addItem(new Person("홍길동", "...", "MM/DD"));
-        adapter.addItem(new Person("김영희", "프로필 뭐하지", "MM/DD"));
-        adapter.addItem(new Person("김철수", "ㅎㅇ", "MM/DD"));
-        adapter.addItem(new Person("김민지", "정산 부탁드립니다.", "MM/DD"));
-        adapter.addItem(new Person("홍길동", "여행 언제가지", "MM/DD"));
-        adapter.addItem(new Person("김영희", "안녕", "MM/DD"));
-        adapter.addItem(new Person("김철수", "10시 30분", "MM/DD"));
-        adapter.addItem(new Person("김민지", "뭐함?", "MM/DD"));
+
         recyclerView.setAdapter(adapter);
         return view;
     }
