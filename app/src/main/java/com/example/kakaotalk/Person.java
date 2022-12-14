@@ -1,6 +1,10 @@
 package com.example.kakaotalk;
 
-public class Person {
+import android.os.Parcel;
+import android.os.Parcelable;
+
+public class Person{
+
     private String email, password;
     private String name, birth, tellPhone, text;
     private String friendList;
@@ -72,4 +76,5 @@ public class Person {
     public void setText(String text) {
         this.text = text;
     }
+
 }

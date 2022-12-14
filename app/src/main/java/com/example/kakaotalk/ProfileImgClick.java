@@ -25,7 +25,7 @@ public class ProfileImgClick extends AppCompatActivity {
 
         Intent intent = getIntent();
 
-        byte[] byteArray = getIntent().getByteArrayExtra("이미지");
+        byte[] byteArray = intent.getByteArrayExtra("이미지");
         Bitmap bitmap = BitmapFactory.decodeByteArray(byteArray, 0, byteArray.length);
 
         DisplayMetrics displayMetrics = new DisplayMetrics();

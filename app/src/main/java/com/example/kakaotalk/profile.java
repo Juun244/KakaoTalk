@@ -45,18 +45,20 @@ public class profile extends Fragment{ //MainActivity.java에서 setfrag(0)일 �
 
         FirebaseAuth mAuth = FirebaseAuth.getInstance();
         FirebaseUser me = mAuth.getCurrentUser();
+
         // 현재 로그인한 유저의 정보부터 add
         readPerson();
         /*
         //테스트용 임시 데이터
         adapter.addItem(new Person("a@aa.com","홍길동", "프로필"));
-        adapter.addItem(new Person("a@aa.com","김영희", "안녕"));
-        adapter.addItem(new Person("a@aa.com","김철수", "--"));
-        adapter.addItem(new Person("a@aa.com","김민지", "상태메세지입니다."));
-        adapter.addItem(new Person("a@aa.com","홍길동", "프로필"));
-        adapter.addItem(new Person("a@aa.com","김영희", "안녕"));
-        adapter.addItem(new Person("a@aa.com","김철수", "--"));
-        adapter.addItem(new Person("a@aa.com","김민지", "상태메세지입니다."));*/
+        adapter.addItem(new Person("b@bb.com","김영희", "안녕"));
+        adapter.addItem(new Person("c@cc.com","김철수", "--"));
+        adapter.addItem(new Person("d@dd.com","김민지", "상태메세지입니다."));
+        adapter.addItem(new Person("f@ff.com","홍길동", "프로필"));
+        adapter.addItem(new Person("g@gg.com","김영희", "안녕"));
+        adapter.addItem(new Person("h@hh.com","김철수", "--"));
+        adapter.addItem(new Person("i@ii.com","김민지", "상태메세지입니다."));
+         */
         recyclerView.setAdapter(adapter);
         return view;
     }
@@ -82,5 +84,6 @@ public class profile extends Fragment{ //MainActivity.java에서 setfrag(0)일 �
             }
         });
     }
+
 
 }
