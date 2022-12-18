@@ -1,6 +1,5 @@
 package com.example.kakaotalk;
 
-import android.app.ActivityOptions;
 import android.content.Intent;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -8,15 +7,13 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 
-public class ChatAdapter extends RecyclerView.Adapter<ChatAdapter.ViewHolder> {
+public class RoomAdapter extends RecyclerView.Adapter<RoomAdapter.ViewHolder> {
 
     public ArrayList<Chat> chatItem = new ArrayList<Chat>();
 
@@ -43,7 +40,6 @@ public class ChatAdapter extends RecyclerView.Adapter<ChatAdapter.ViewHolder> {
                 if(pos != RecyclerView.NO_POSITION) {
                     Intent intent = new Intent(v.getContext(), Chatroom.class);
                     intent.putExtra("id", item.getId());
-                    intent.putExtra("members", item.getMembers());
                     v.getContext().startActivity(intent);
                 }
             }
@@ -71,13 +67,7 @@ public class ChatAdapter extends RecyclerView.Adapter<ChatAdapter.ViewHolder> {
         public void setItem(Chat item) {
             textView.setText(item.getName());
             textView2.setText(item.getLastchat());
-
-            long curTime = Long.parseLong(item.getLastday());
-            SimpleDateFormat timeFormat = new SimpleDateFormat("MM/dd");
-            String lasttime = timeFormat.format(curTime);
-
-            textView3.setText(lasttime);
-
+            textView3.setText(item.getLastday());
         }
     }
 

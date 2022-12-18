@@ -1,33 +1,35 @@
 package com.example.kakaotalk;
 
+<<<<<<< Updated upstream
 public class Person {
+=======
+import java.io.Serializable;
+
+public class Person implements Serializable {
+
+    private static final long serialVersionUID = 1L;
+
+>>>>>>> Stashed changes
     private String email, password;
     private String name, birth, tellPhone, text;
-    private String friendList;
+    private String friendlist, image, backImage;
+    private String noImage = null;
 
     public Person() {}
 
-    public Person(String email, String name, String text) {
-        this.email = email;
-        this.name = name;
-        this.text = text;
-    }
-
-    public Person(String email, String password, String name, String tellPhone, String birth) {
-        this.email = email;
-        this.password = password;
-        this.name = name;
-        this.tellPhone = tellPhone;
-        this.birth = birth;
-    }
-
-    public Person(String email, String password, String name, String tellPhone, String birth, String text) {
+    public Person(String email, String password, String name, String tellPhone, String birth, String text, String friendlist) {
         this.email = email;
         this.password = password;
         this.name = name;
         this.tellPhone = tellPhone;
         this.birth = birth;
         this.text = text;
+        this.friendlist = friendlist;
+    }
+
+
+    public Person(String name) {
+        this.name = name;
     }
 
     public String getName() {
@@ -37,7 +39,7 @@ public class Person {
         return birth;
     }
     public String getFriendList() {
-        return friendList;
+        return friendlist;
     }
     public String getTellPhone() {
         return tellPhone;
@@ -46,7 +48,14 @@ public class Person {
         return email;
     }
     public String getPassword() {return password;}
+    public String getImage() {
+        return image;
+    }
+    public String getBackImage() {
+        return backImage;
+    }
 
+    public String getId() { return email.substring(0, email.indexOf("@")); }
 
     public void setName(String name) {
         this.name = name;
@@ -61,12 +70,27 @@ public class Person {
         this.email = email;
     }
     public void setFriendList(String friendList) {
-        this.friendList = friendList;
+        this.friendlist = friendList;
     }
     public void setPassword(String password) {this.password = password;}
+    public void setImage(String image) {
+        this.image = image;
+    }
+    public void setBackImage(String backImage) {
+        this.backImage = backImage;
+    }
 
     public String getText() {
         return text;
+    }
+
+    //라디오버튼 위한 select 관리 메서드
+    boolean isSelected;
+    public boolean getSelected() {
+        return isSelected;
+    }
+    public void setSelected(boolean selected) {
+        isSelected = selected;
     }
 
     public void setText(String text) {

@@ -1,16 +1,53 @@
 package com.example.kakaotalk;
 
+<<<<<<< Updated upstream
 import android.content.Intent;
 import android.os.Bundle;
+=======
+import android.annotation.SuppressLint;
+import android.content.ContentResolver;
+import android.content.Intent;
+import android.database.Cursor;
+import android.net.Uri;
+import android.os.Bundle;
+import android.provider.MediaStore;
+import android.util.Log;
+>>>>>>> Stashed changes
 import android.view.View;
+import android.webkit.MimeTypeMap;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
+<<<<<<< Updated upstream
+=======
+import androidx.activity.result.ActivityResult;
+import androidx.activity.result.ActivityResultCallback;
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
+import androidx.annotation.NonNull;
+>>>>>>> Stashed changes
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.loader.content.CursorLoader;
 
+<<<<<<< Updated upstream
+=======
+import com.bumptech.glide.Glide;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
+import com.google.firebase.storage.UploadTask;
+
+>>>>>>> Stashed changes
 import de.hdodenhof.circleimageview.CircleImageView;
 
 public class ProfileManage extends AppCompatActivity {
@@ -18,15 +55,32 @@ public class ProfileManage extends AppCompatActivity {
     Button set_backgr_btn, save_btn;
     CircleImageView profile_img;
     TextView name_text, state_text;
+<<<<<<< Updated upstream
+=======
+    EditText name_edit, state_edit;
+    int i =0, j=0;
+>>>>>>> Stashed changes
 
+    //로컬 사진첩에서 사진을 가져올 때 사용하는 변수
+    private Uri imgUri;
+    // firebaseStorage에 접근할 때 필요한 변수
+    private StorageReference storageRef = FirebaseStorage.getInstance().getReference();
+    private DatabaseReference userDB = FirebaseDatabase.getInstance().getReference("Users");
 
+    @SuppressLint("MissingInflatedId")
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile_manage);
         Intent intent = getIntent();
 
+<<<<<<< Updated upstream
         String name = getString(R.string.name).format(intent.getStringExtra("이름"));
         String message = getString(R.string.message).format(intent.getStringExtra("메세지"));
+=======
+        String name = "%s".format(intent.getStringExtra("이름"));
+        String message = "%s".format(intent.getStringExtra("메세지"));
+        String email = intent.getStringExtra("이메일");
+>>>>>>> Stashed changes
 
         back_btn = findViewById(R.id.back_btn);
         set_image_btn = findViewById(R.id.set_image_btn);
@@ -37,9 +91,29 @@ public class ProfileManage extends AppCompatActivity {
         profile_img = findViewById(R.id.profile_img); //이미지뷰입니다.
         name_text = findViewById(R.id.name_text);
         state_text = findViewById(R.id.state_text);
+        name_edit = findViewById(R.id.name_edit);
+        state_edit = findViewById(R.id.state_edit);
 
         name_text.setText(name);
         state_text.setText(message);
+
+        userDB.child(email).addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                Person person = snapshot.getValue(Person.class);
+                if (person.getImage() == null || person.getImage().equals("")) {
+                    profile_img.setImageResource(R.drawable.default_profile);
+                } else {
+                    Glide.with(profile_img).load(person.getImage()).into(profile_img);
+                }
+                imgUri = Uri.parse(person.getImage());
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
 
         back_btn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -53,7 +127,14 @@ public class ProfileManage extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Toast.makeText(view.getContext(), "프로필 이미지 설정 버튼을 눌렀습니다.", Toast.LENGTH_SHORT).show();
+<<<<<<< Updated upstream
 
+=======
+                Intent gellery;
+                gellery = new Intent(Intent.ACTION_GET_CONTENT);
+                gellery.setType("image/");
+                activityResult.launch(gellery);
+>>>>>>> Stashed changes
             }
         });
 
@@ -61,18 +142,61 @@ public class ProfileManage extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Toast.makeText(view.getContext(), "이름 설정 버튼을 눌렀습니다.", Toast.LENGTH_SHORT).show();
+<<<<<<< Updated upstream
 
             }
         });
 
+=======
+                i = 1 - i;
+                if (i == 0) {
+                    set_name_btn.setImageResource(R.drawable.pencil_icon);
+                    String temp = name_edit.getText().toString();
+                    name_text.setText(temp);
+                    name_text.setVisibility(View.VISIBLE);
+                    name_edit.setVisibility(View.INVISIBLE);
+                } else {
+                    set_name_btn.setImageResource(R.drawable.save_icon);
+                    String temp = name_text.getText().toString();
+                    name_edit.setText(temp);
+                    name_text.setVisibility(View.INVISIBLE);
+                    name_edit.setVisibility(View.VISIBLE);
+
+                }
+            }
+        });
+
+
+>>>>>>> Stashed changes
         set_state_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Toast.makeText(view.getContext(), "상태메세지 설정 버튼을 눌렀습니다.", Toast.LENGTH_SHORT).show();
+<<<<<<< Updated upstream
 
             }
         });
 
+=======
+                j = 1 - j;
+                if (j == 0) {
+                    set_state_btn.setImageResource(R.drawable.pencil_icon);
+                    String temp = state_edit.getText().toString();
+                    state_text.setText(temp);
+                    state_text.setVisibility(View.VISIBLE);
+                    state_edit.setVisibility(View.INVISIBLE);
+                } else {
+                    set_state_btn.setImageResource(R.drawable.save_icon);
+                    String temp = state_text.getText().toString();
+                    state_edit.setText(temp);
+                    state_text.setVisibility(View.INVISIBLE);
+                    state_edit.setVisibility(View.VISIBLE);
+                }
+            }
+        });
+
+
+>>>>>>> Stashed changes
         set_backgr_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -84,12 +208,23 @@ public class ProfileManage extends AppCompatActivity {
         save_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+<<<<<<< Updated upstream
                 Toast.makeText(view.getContext(), "적용 버튼을 눌렀습니다.", Toast.LENGTH_SHORT).show();
 
+=======
+                try{
+                    userDB.child(email).child("name").setValue(name_text.getText().toString());
+                    userDB.child(email).child("text").setValue(state_text.getText().toString());
+                    upLoadToFirebase(imgUri);
+                    Thread.sleep(3000);
+                }
+                catch(InterruptedException e){
+                    e.printStackTrace();
+                }
+                    Toast.makeText(view.getContext(), "적용", Toast.LENGTH_SHORT).show();
+>>>>>>> Stashed changes
             }
         });
-
-
     }
     //애니메이션을 없애 종료 시 프로필 화면으로의 전환을 부드럽게 함.
     @Override
@@ -97,4 +232,70 @@ public class ProfileManage extends AppCompatActivity {
         super.finish();
         overridePendingTransition(0,0);
     }
+<<<<<<< Updated upstream
+=======
+
+    ActivityResultLauncher<Intent> activityResult = registerForActivityResult(
+            new ActivityResultContracts.StartActivityForResult(),
+            new ActivityResultCallback<ActivityResult>() {
+                @Override
+                public void onActivityResult(ActivityResult result) {
+                    if(result.getResultCode() == RESULT_OK && result.getData() != null) {
+                        imgUri = result.getData().getData();
+
+                        profile_img.setImageURI(imgUri);
+                    }
+                }
+            }
+    );
+
+    private String getImagePathFromUri(Uri uri) {
+        String[] proj = {MediaStore.Images.Media.DATA};
+        CursorLoader cursorLoader = new CursorLoader(ProfileManage.this, uri, proj, null, null, null);
+        Cursor cursor = cursorLoader.loadInBackground();
+
+        int columnIndex = cursor.getColumnIndexOrThrow(MediaStore.Images.Media.DATA);
+        cursor.moveToFirst();
+        String url = cursor.getString(columnIndex);
+        cursor.close();
+        return url;
+    }
+//
+//    private void upLoadToFirebase(Uri uri) {
+//        StorageReference fileRef = storageRef.child(System.currentTimeMillis() + "." + getFileExtension(uri));
+//        fileRef.putFile(uri);
+//        FirebaseUser me = FirebaseAuth.getInstance().getCurrentUser();
+//        DatabaseReference myData = FirebaseDatabase.getInstance().getReference("Users").child(me.getEmail().substring(0, me.getEmail().indexOf("@")));
+//        myData.child("image").setValue(uri.toString());
+//        return;
+    //}
+
+        private void upLoadToFirebase(Uri uri) {
+            StorageReference fileRef = storageRef.child(System.currentTimeMillis() + "." + getFileExtension(uri));
+            fileRef.putFile(uri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                @Override
+                public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                    fileRef.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                        @Override
+                        public void onSuccess(Uri uri) {
+                            // 현재 로그인 한 유저의 정보를 가져와서
+                            // 내 이메일의 @ 이전 부분을 key로 가지는 DB의 내용을 불러온다.
+                            FirebaseUser me = FirebaseAuth.getInstance().getCurrentUser();
+                            DatabaseReference myData = FirebaseDatabase.getInstance().getReference("Users").child(me.getEmail().substring(0, me.getEmail().indexOf("@")));
+                            myData.child("image").setValue(uri.toString());
+                            //Toast.makeText(storeImage.this, "프로필 사진 업로드 완료", Toast.LENGTH_SHORT).show();
+                        }
+                    });
+                }
+            });
+        }
+
+
+      private String getFileExtension(Uri uri) {
+        ContentResolver cr = getContentResolver();
+        MimeTypeMap mime = MimeTypeMap.getSingleton();
+
+        return mime.getExtensionFromMimeType(cr.getType(uri));
+    }
+>>>>>>> Stashed changes
 }

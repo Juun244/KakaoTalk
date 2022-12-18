@@ -9,6 +9,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -22,6 +23,7 @@ import com.google.firebase.database.FirebaseDatabase;
 public class SignUpActivity extends AppCompatActivity {
     private EditText edtEmail, edtPass, edtName, edtTell, edtBirth;
     private Button btnJoin;
+    private ImageButton btnBack;
     private FirebaseAuth mAuth = FirebaseAuth.getInstance();
     private DatabaseReference userDB = FirebaseDatabase.getInstance().getReference("Users");
 
@@ -36,7 +38,15 @@ public class SignUpActivity extends AppCompatActivity {
         edtTell = (EditText) findViewById(R.id.editText_tellPhone);
         edtBirth = (EditText) findViewById(R.id.editText_birth);
 
+        btnBack = (ImageButton) findViewById(R.id.signUp_backBtn);
         btnJoin = (Button) findViewById(R.id.btn_join);
+
+        btnBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+            }
+        });
 
         btnJoin.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -53,7 +63,7 @@ public class SignUpActivity extends AppCompatActivity {
                         if(task.isSuccessful()) {
                             FirebaseUser firebaseUser = mAuth.getCurrentUser();
                             Log.d("확인", String.valueOf(firebaseUser));
-                            Person newUser = new Person(email, passWord, name, tellPhone, birth, "text");
+                            Person newUser = new Person(email, passWord, name, tellPhone, birth, "text", email.substring(0, email.indexOf("@")));
                             userDB.child(firebaseUser.getEmail().substring(0,firebaseUser.getEmail().indexOf("@"))).setValue(newUser);
                             Toast.makeText(SignUpActivity.this, "회원가입 성공", Toast.LENGTH_SHORT).show();
                             finish();
@@ -64,5 +74,11 @@ public class SignUpActivity extends AppCompatActivity {
                 });
             }
         });
+    }
+
+    @Override
+    public void finish(){
+        super.finish();
+        overridePendingTransition(R.anim.fromup, R.anim.todown);
     }
 }

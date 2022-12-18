@@ -5,7 +5,21 @@
     <item
         android:id="@+id/search"
         android:icon="@drawable/search_icon"
-        android:title="Item"
+        android:title="Item1"
         app:showAsAction="always" ></item>
+
+    <item
+        android:id="@+id/add_friend"
+        android:icon="@drawable/emo_friend_plus"
+        android:title="Item2"
+        app:showAsAction="always"
+        android:visible="true" ></item>
+
+    <item
+        android:id="@+id/add_group"
+        android:icon="@drawable/emo_group"
+        android:title="Item3"
+        app:showAsAction="always"
+        android:visible="false" ></item>
 
 </menu>

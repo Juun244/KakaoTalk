@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.LinearLayout;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -29,16 +30,17 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class profile extends Fragment{ //MainActivity.java에서 setfrag(0)일 때 호출된다.
-    private DatabaseReference userDB=  FirebaseDatabase.getInstance().getReference("Users");
+    public DatabaseReference userDB =  FirebaseDatabase.getInstance().getReference("Users");
     PersonAdapter adapter = new PersonAdapter(); //personAdapter 객체 호출
-
+    private View view;
+    public RecyclerView recyclerView;
     @SuppressLint("LongLogTag")
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState)
     {
-        View view = inflater.inflate(R.layout.profile, container, false);
-        RecyclerView recyclerView = view.findViewById(R.id.recyclerView); //리사이클러뷰 객체 생성
+        view = inflater.inflate(R.layout.profile, container, false);
+        recyclerView = view.findViewById(R.id.recyclerView); //리사이클러뷰 객체 생성
         LinearLayoutManager layoutManager =
                 new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false);
         recyclerView.setLayoutManager(layoutManager);
@@ -62,18 +64,27 @@ public class profile extends Fragment{ //MainActivity.java에서 setfrag(0)일 �
     }
 
     // userDB로 부터 id를 통해서 해당 Person 객체를 찾아주는 함수
-    private void readPerson() {
+    public void readPerson() {
         userDB.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                adapter.items.clear();
-                FirebaseAuth mAuth = FirebaseAuth.getInstance();
-                FirebaseUser curUser = mAuth.getCurrentUser();
-                for(DataSnapshot dataSnapshot : snapshot.getChildren()) {;
-                    Person person = dataSnapshot.getValue(Person.class);
-                    if(person.getEmail().equals(curUser.getEmail())) adapter.addFirst(person);
-                    else adapter.addItem(person);
+                try {
+                    adapter.items.clear();
+                    FirebaseAuth mAuth = FirebaseAuth.getInstance();
+                    FirebaseUser curUser = mAuth.getCurrentUser();
+
+                    String myid = curUser.getEmail().substring(0, curUser.getEmail().indexOf("@"));
+
+                    Person me = snapshot.child(myid).getValue(Person.class);
+                    String[] str = me.getFriendList().split(",");
+                    //adapter.addFirst(me);
+                    for(String tmp : str){
+                        Person person = snapshot.child(tmp).getValue(Person.class);
+                        adapter.addItem(person);
+                    }
+                    recyclerView.setAdapter(adapter);
                 }
+                catch (NullPointerException e) {}
             }
 
             @Override

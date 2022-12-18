@@ -10,9 +10,8 @@
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
-        android:icon="@mipmap/ic_launcher"
-        android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
+        android:icon="@drawable/kakaotalk_icon"
+        android:label="KakaoTalk"
         android:supportsRtl="true"
         android:theme="@style/Theme.KakaoTalk"
         android:usesCleartextTraffic="true"
@@ -34,10 +33,15 @@
         <activity
             android:name=".MainActivity"
             android:exported="true" />
-        <activity android:name=".ChatSearchActivity" />
+        <activity android:name=".Chatroom"
+            android:windowSoftInputMode="adjustPan"/>
         <activity android:name=".ProfileManage"/>
         <activity android:name=".ProfileClick" />
         <activity android:name=".ProfileImgClick"/>
+        <activity android:name=".ChatSearchActivity"/>
+        <activity android:name=".AddFriendActivity" />
+        <activity android:name=".AddGroupActivity" />
+        <activity android:name=".setAccountActivity" />
     </application>
 
 </manifest>
