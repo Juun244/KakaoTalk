@@ -36,14 +36,6 @@
                 android:text="RoomName"
                 android:textSize="20sp" />
 
-            <ImageButton
-                android:id="@+id/image_search"
-                android:layout_width="30sp"
-                android:layout_height="match_parent"
-                android:layout_margin="10sp"
-                android:background="@android:color/transparent"
-                android:scaleType="fitCenter"
-                app:srcCompat="@drawable/search_icon" />
         </LinearLayout>
 
         <LinearLayout

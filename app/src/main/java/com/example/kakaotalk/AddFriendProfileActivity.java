@@ -35,7 +35,6 @@ public class AddFriendProfileActivity extends AppCompatActivity {
         Bundle intent = getIntent().getExtras();
         View1.setText(intent.getString("TEXT"));
 
-
     }
 
     //창 종료시 현재 창이 아래로 내려가는 애니메이션 추가

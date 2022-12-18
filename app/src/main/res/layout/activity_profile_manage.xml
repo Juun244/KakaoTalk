@@ -122,6 +122,7 @@
         android:textSize="15sp"
         android:id="@+id/set_backgr_btn"
         android:background="@android:color/transparent"
+        android:visibility="invisible"
         android:text="배경 설정"
         android:textStyle="bold"/>
 

@@ -41,14 +41,14 @@ public class AddGroupAdapter extends RecyclerView.Adapter<AddGroupAdapter.ViewHo
         viewHolder.selected.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
-                item.setSelected(item.isSelected);
-                Toast.makeText(compoundButton.getContext(), "selected", Toast.LENGTH_SHORT).show();
+                item.setSelected(!item.isSelected);
             }
         });
         viewHolder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 int pos = viewHolder.getAdapterPosition();
+
             }
         });
 

@@ -27,10 +27,10 @@
             android:layout_marginTop="5sp"
             android:layout_marginEnd="5sp"
             android:layout_marginBottom="5sp"
-            android:background="@drawable/my_chatt"
+            android:background="@drawable/round_y"
             android:gravity="center_vertical"
             android:maxWidth="265sp"
-            android:padding="20sp"
+            android:padding="10sp"
             android:text="%ss"
             android:textSize="15sp" />
     </RelativeLayout>

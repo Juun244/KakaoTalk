@@ -33,15 +33,16 @@
         android:layout_height="wrap_content">
 
         <TextView
+            android:layout_marginLeft="5dp"
             android:id="@+id/others_chat"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="5sp"
-            android:background="@drawable/others_chatt"
+            android:background="@drawable/round_w"
             android:gravity="center_vertical"
             android:layout_marginTop="25sp"
             android:maxWidth="265sp"
-            android:padding="20sp"
+            android:padding="10sp"
             android:text="%ssss"
             android:textSize="15sp" />
 

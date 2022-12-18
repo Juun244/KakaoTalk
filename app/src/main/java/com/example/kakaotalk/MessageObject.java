@@ -53,7 +53,7 @@ public class MessageObject {
 
     public String getDate(){
         long curTime = Long.parseLong(sendTime);
-        SimpleDateFormat timeFormat = new SimpleDateFormat("MM/dd");
+        SimpleDateFormat timeFormat = new SimpleDateFormat("hh:mm");
         String lasttime = timeFormat.format(curTime);
         return lasttime;
     }

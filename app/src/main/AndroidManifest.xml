@@ -33,12 +33,12 @@
         <activity
             android:name=".MainActivity"
             android:exported="true" />
+        <activity android:name=".ChatSearchActivity" />
         <activity android:name=".Chatroom"
             android:windowSoftInputMode="adjustPan"/>
         <activity android:name=".ProfileManage"/>
         <activity android:name=".ProfileClick" />
         <activity android:name=".ProfileImgClick"/>
-        <activity android:name=".ChatSearchActivity"/>
         <activity android:name=".AddFriendActivity" />
         <activity android:name=".AddGroupActivity" />
         <activity android:name=".setAccountActivity" />

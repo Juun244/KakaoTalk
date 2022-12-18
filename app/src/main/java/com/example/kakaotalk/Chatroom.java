@@ -43,7 +43,6 @@ public class Chatroom extends AppCompatActivity {
     private String me = curUser.getEmail().substring(0, curUser.getEmail().indexOf("@"));
 
     ArrayList<MessageObject> items = new ArrayList<MessageObject>();
-    ArrayList<MemberListner> memberListner = new ArrayList<MemberListner>();
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -71,7 +70,7 @@ public class Chatroom extends AppCompatActivity {
         LinearLayoutManager manager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
         chatting.setLayoutManager(manager);
 
-        connectChat(members);
+        connectChat();
         
         //devTest();
         send.setOnClickListener(new View.OnClickListener() {
@@ -79,11 +78,10 @@ public class Chatroom extends AppCompatActivity {
             public void onClick(View view) {
                 lastSend = String.valueOf(System.currentTimeMillis());
                 chatDB.child(id).child("lastchat").setValue(message.getText().toString());
-                chatDB.child(id).child("data").child(me).setValue(new String(me+","+message.getText().toString()+","+lastSend));
+                chatDB.child(id).child("data").child(lastSend).setValue(new String(me+","+message.getText().toString()+","+lastSend));
                 chatDB.child(id).child("lastday").setValue(lastSend);
                 //items.add(new MessageObject(me+","+message.getText().toString()+","+lastSend));
                 message.setText("");
-                //Toast.makeText(Chatroom.this, String.valueOf(items.size()), Toast.LENGTH_SHORT).show();
             }
         });
     }
@@ -94,43 +92,27 @@ public class Chatroom extends AppCompatActivity {
         overridePendingTransition(R.anim.fromleft,R.anim.toright);
     }
 
-    public class MemberListner{
-        private String memberId;
-        private int count;
-        DatabaseReference chatDB = FirebaseDatabase.getInstance().getReference("Chats");
-        MemberListner(String memberId){
-            this.memberId = memberId;
-            count = 0;
-            dataListner();
-        }
-        public void dataListner(){
-            chatDB.child(id).child("data").child(memberId).addValueEventListener(new ValueEventListener() {
-                @Override
-                public void onDataChange(@NonNull DataSnapshot snapshot) {
-                    String test = snapshot.getValue(String.class);
-                    count ++;
-                    if(test != null && count%2 == 0){
-                        if(me.equals(memberId)) items.add(new MessageObject(test));
-                        else items.add(new MessageObject(test, 1));
-                        count = 0;
-                        adapter.submitData(items);
-                        chatting.setAdapter(adapter);
-                    }
-                }
-
-                @Override
-                public void onCancelled(@NonNull DatabaseError error) {
+    public void connectChat() {
+        chatDB.child(id).child("data").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                items.clear();
+                for(DataSnapshot dataSnapshot : snapshot.getChildren()){
+                    String test = dataSnapshot.getValue(String.class);
+                    if(test.split(",")[0].equals(curUser.getEmail().split("@")[0])) items.add(new MessageObject(test));
+                    else items.add(new MessageObject(test, 1));
+                    adapter.submitData(items);
+                    chatting.setAdapter(adapter);
+                    if(items.size() > 8) chatting.scrollToPosition(items.size()-8);
 
                 }
-            });
-        }
-    }
 
-    public void connectChat(String members){
-        for(String member : members.split(",")){
-            MemberListner mem = new MemberListner(member);
-            memberListner.add(mem);
-            mem.dataListner();
-        }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
     }
 }

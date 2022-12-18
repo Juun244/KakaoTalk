@@ -1,15 +1,11 @@
 package com.example.kakaotalk;
 
-<<<<<<< Updated upstream
-public class Person {
-=======
 import java.io.Serializable;
 
 public class Person implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
->>>>>>> Stashed changes
     private String email, password;
     private String name, birth, tellPhone, text;
     private String friendlist, image, backImage;

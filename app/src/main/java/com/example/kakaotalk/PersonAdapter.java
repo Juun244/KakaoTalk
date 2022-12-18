@@ -62,8 +62,7 @@ public class PersonAdapter extends RecyclerView.Adapter<PersonAdapter.ViewHolder
                     String text = viewHolder.textView.getText().toString();
                     String text2 = viewHolder.textView2.getText().toString();
                     String id = item.getEmail().substring(0, item.getEmail().indexOf("@"));
-                    Intent intent = new Intent(v.getContext(),
-                            ProfileClick.class);
+                    Intent intent = new Intent(v.getContext(), ProfileClick.class);
                     //myProfileActivity에 누른 아이템의 이름과 메세지를 넘겨줌
                     intent.putExtra("이름", text);
                     intent.putExtra("메세지",text2);
@@ -79,7 +78,7 @@ public class PersonAdapter extends RecyclerView.Adapter<PersonAdapter.ViewHolder
                     v.getContext().startActivity(intent,activityOptions.toBundle());
                 }
                 else if(pos != RecyclerView.NO_POSITION && pos != 0) {
-                    Toast.makeText(v.getContext(), "타인의 프로필을 눌렀습니다.", Toast.LENGTH_SHORT).show();
+                    //Toast.makeText(v.getContext(), "타인의 프로필을 눌렀습니다.", Toast.LENGTH_SHORT).show();
 
                     String text = viewHolder.textView.getText().toString();
                     String text2 = viewHolder.textView2.getText().toString();

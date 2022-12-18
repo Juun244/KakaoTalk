@@ -89,7 +89,7 @@ public class settings extends Fragment {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getActivity(), setAccountActivity.class);
-                intent.putExtra("이메일", me.getEmail().substring(0, me.getEmail().indexOf("@")));
+                intent.putExtra("이메일", me.getEmail());
                 startActivity(intent);
             }
         });
@@ -133,7 +133,7 @@ public class settings extends Fragment {
             @Override
             public void onClick(View view) {
                 MainActivity activity = (MainActivity) getActivity();
-                Toast.makeText(activity,"로그아웃 버튼을 눌렀습니다.", Toast.LENGTH_SHORT).show();
+                Toast.makeText(activity,"로그아웃 되었습니다", Toast.LENGTH_SHORT).show();
                 FirebaseAuth.getInstance().signOut();
 
                 getActivity().finish();
@@ -148,7 +148,7 @@ public class settings extends Fragment {
             @Override
             public void onClick(View view) {
                 MainActivity activity = (MainActivity) getActivity();
-                Toast.makeText(activity,"프로필 관리 버튼을 눌렀습니다", Toast.LENGTH_SHORT).show();
+                //Toast.makeText(activity,"프로필 관리 버튼을 눌렀습니다", Toast.LENGTH_SHORT).show();
                 String text = name_textView.getText().toString();
                 String text2 = telephone_textview.getText().toString();
                 Intent intent = new Intent(view.getContext(), ProfileManage.class);

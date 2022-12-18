@@ -129,9 +129,9 @@ public class MainActivity extends AppCompatActivity {
                 for(DataSnapshot dataSnapshot : snapshot.getChildren()){
                     Person friend = dataSnapshot.getValue(Person.class);
                     if(friend.getEmail().equals(curUser.getEmail()) == false) people.add(friend);
-//                    else{
-//                        people.add(0, friend);
-//                    }
+                    else{
+                       people.add(0, friend);
+                    }
 
                 }
             }
@@ -156,12 +156,12 @@ public class MainActivity extends AppCompatActivity {
 
                     Person me = snapshot.child(myId).getValue(Person.class);
                     str = me.getFriendList().split(",");
-                    //adapter.addFirst(me);
                     for (String tmp : str) {
                         if(tmp.equals(curUser.getEmail().substring(0, curUser.getEmail().indexOf("@")))) continue;
                         Person person = snapshot.child(tmp).getValue(Person.class);
                         friends.add(person);
                     }
+                    friends.add(0, me);
             }
 
             @Override
@@ -212,7 +212,7 @@ public class MainActivity extends AppCompatActivity {
 
         switch (item.getItemId()){
             case R.id.search:
-                Toast.makeText(getApplicationContext(), "친구 검색 버튼을 눌렸습니다.", Toast.LENGTH_SHORT).show();
+                //Toast.makeText(getApplicationContext(), "친구 검색 버튼을 눌렸습니다.", Toast.LENGTH_SHORT).show();
                 //select search item
                 //새 창이 위로 올라오는 애니메이션
                 ActivityOptions activityOptions = ActivityOptions.makeCustomAnimation(getApplicationContext(),R.anim.fromdown,R.anim.toup);
@@ -221,7 +221,7 @@ public class MainActivity extends AppCompatActivity {
                 return true;
 
             case R.id.add_friend:
-                Toast.makeText(getApplicationContext(), "친구 추가 버튼을 눌렸습니다.", Toast.LENGTH_SHORT).show();
+                //Toast.makeText(getApplicationContext(), "친구 추가 버튼을 눌렸습니다.", Toast.LENGTH_SHORT).show();
                 //select add_friend item
                 loadpeople(); loadpeople();
                 Intent intent2 = new Intent(this, AddFriendActivity.class);
@@ -231,7 +231,7 @@ public class MainActivity extends AppCompatActivity {
                 return true;
 
             case R.id.add_group:
-                Toast.makeText(getApplicationContext(), "채팅방 생성 버튼을 눌렸습니다.", Toast.LENGTH_SHORT).show();
+                //Toast.makeText(getApplicationContext(), "채팅방 생성 버튼을 눌렸습니다.", Toast.LENGTH_SHORT).show();
                 //select add_group item
                 loadfriends(); loadfriends();
                 Intent intent3 = new Intent(this, AddGroupActivity.class);

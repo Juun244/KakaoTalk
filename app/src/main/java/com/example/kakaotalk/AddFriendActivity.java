@@ -113,7 +113,7 @@ public class AddFriendActivity extends AppCompatActivity {
                                     //Glide.with(profile_img).load(person.getImage()).into(profile_img);
                                     idLayout.setVisibility(View.GONE);
                                     profileLayout.setVisibility(View.VISIBLE);
-                                    Toast.makeText(getApplicationContext(), "123", Toast.LENGTH_SHORT).show();
+                                    //Toast.makeText(getApplicationContext(), "123", Toast.LENGTH_SHORT).show();
                                     target = person;
                                     return true;
                                 }

@@ -1,9 +1,5 @@
 package com.example.kakaotalk;
 
-<<<<<<< Updated upstream
-import android.content.Intent;
-import android.os.Bundle;
-=======
 import android.annotation.SuppressLint;
 import android.content.ContentResolver;
 import android.content.Intent;
@@ -12,28 +8,24 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.util.Log;
->>>>>>> Stashed changes
 import android.view.View;
 import android.webkit.MimeTypeMap;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-<<<<<<< Updated upstream
-=======
 import androidx.activity.result.ActivityResult;
 import androidx.activity.result.ActivityResultCallback;
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
->>>>>>> Stashed changes
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.loader.content.CursorLoader;
 
-<<<<<<< Updated upstream
-=======
 import com.bumptech.glide.Glide;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
@@ -47,7 +39,6 @@ import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 
->>>>>>> Stashed changes
 import de.hdodenhof.circleimageview.CircleImageView;
 
 public class ProfileManage extends AppCompatActivity {
@@ -55,11 +46,8 @@ public class ProfileManage extends AppCompatActivity {
     Button set_backgr_btn, save_btn;
     CircleImageView profile_img;
     TextView name_text, state_text;
-<<<<<<< Updated upstream
-=======
     EditText name_edit, state_edit;
     int i =0, j=0;
->>>>>>> Stashed changes
 
     //로컬 사진첩에서 사진을 가져올 때 사용하는 변수
     private Uri imgUri;
@@ -73,14 +61,9 @@ public class ProfileManage extends AppCompatActivity {
         setContentView(R.layout.activity_profile_manage);
         Intent intent = getIntent();
 
-<<<<<<< Updated upstream
-        String name = getString(R.string.name).format(intent.getStringExtra("이름"));
-        String message = getString(R.string.message).format(intent.getStringExtra("메세지"));
-=======
         String name = "%s".format(intent.getStringExtra("이름"));
         String message = "%s".format(intent.getStringExtra("메세지"));
         String email = intent.getStringExtra("이메일");
->>>>>>> Stashed changes
 
         back_btn = findViewById(R.id.back_btn);
         set_image_btn = findViewById(R.id.set_image_btn);
@@ -106,7 +89,8 @@ public class ProfileManage extends AppCompatActivity {
                 } else {
                     Glide.with(profile_img).load(person.getImage()).into(profile_img);
                 }
-                imgUri = Uri.parse(person.getImage());
+                if(person.getImage() == null) imgUri = Uri.parse("https://firebasestorage.googleapis.com/v0/b/test-62306.appspot.com/o/default_profile.jpeg?alt=media&token=ac44e567-b1fc-4c37-9c95-f3a338103b31");
+                else imgUri = Uri.parse(person.getImage());
             }
 
             @Override
@@ -118,7 +102,7 @@ public class ProfileManage extends AppCompatActivity {
         back_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(view.getContext(), "뒤로가기를 눌렀습니다.", Toast.LENGTH_SHORT).show();
+                //Toast.makeText(view.getContext(), "뒤로가기를 눌렀습니다.", Toast.LENGTH_SHORT).show();
                 finish();
             }
         });
@@ -126,28 +110,18 @@ public class ProfileManage extends AppCompatActivity {
         set_image_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(view.getContext(), "프로필 이미지 설정 버튼을 눌렀습니다.", Toast.LENGTH_SHORT).show();
-<<<<<<< Updated upstream
-
-=======
+                //Toast.makeText(view.getContext(), "프로필 이미지 설정 버튼을 눌렀습니다.", Toast.LENGTH_SHORT).show();
                 Intent gellery;
                 gellery = new Intent(Intent.ACTION_GET_CONTENT);
                 gellery.setType("image/");
                 activityResult.launch(gellery);
->>>>>>> Stashed changes
             }
         });
 
         set_name_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(view.getContext(), "이름 설정 버튼을 눌렀습니다.", Toast.LENGTH_SHORT).show();
-<<<<<<< Updated upstream
-
-            }
-        });
-
-=======
+                //Toast.makeText(view.getContext(), "이름 설정 버튼을 눌렀습니다.", Toast.LENGTH_SHORT).show();
                 i = 1 - i;
                 if (i == 0) {
                     set_name_btn.setImageResource(R.drawable.pencil_icon);
@@ -167,17 +141,10 @@ public class ProfileManage extends AppCompatActivity {
         });
 
 
->>>>>>> Stashed changes
         set_state_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(view.getContext(), "상태메세지 설정 버튼을 눌렀습니다.", Toast.LENGTH_SHORT).show();
-<<<<<<< Updated upstream
-
-            }
-        });
-
-=======
+                //Toast.makeText(view.getContext(), "상태메세지 설정 버튼을 눌렀습니다.", Toast.LENGTH_SHORT).show();
                 j = 1 - j;
                 if (j == 0) {
                     set_state_btn.setImageResource(R.drawable.pencil_icon);
@@ -196,11 +163,10 @@ public class ProfileManage extends AppCompatActivity {
         });
 
 
->>>>>>> Stashed changes
         set_backgr_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(view.getContext(), "배경화면 설정 버튼을 눌렀습니다.", Toast.LENGTH_SHORT).show();
+                //Toast.makeText(view.getContext(), "배경화면 설정 버튼을 눌렀습니다.", Toast.LENGTH_SHORT).show();
 
             }
         });
@@ -208,10 +174,6 @@ public class ProfileManage extends AppCompatActivity {
         save_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-<<<<<<< Updated upstream
-                Toast.makeText(view.getContext(), "적용 버튼을 눌렀습니다.", Toast.LENGTH_SHORT).show();
-
-=======
                 try{
                     userDB.child(email).child("name").setValue(name_text.getText().toString());
                     userDB.child(email).child("text").setValue(state_text.getText().toString());
@@ -221,8 +183,7 @@ public class ProfileManage extends AppCompatActivity {
                 catch(InterruptedException e){
                     e.printStackTrace();
                 }
-                    Toast.makeText(view.getContext(), "적용", Toast.LENGTH_SHORT).show();
->>>>>>> Stashed changes
+                    //Toast.makeText(view.getContext(), "적용", Toast.LENGTH_SHORT).show();
             }
         });
     }
@@ -232,8 +193,6 @@ public class ProfileManage extends AppCompatActivity {
         super.finish();
         overridePendingTransition(0,0);
     }
-<<<<<<< Updated upstream
-=======
 
     ActivityResultLauncher<Intent> activityResult = registerForActivityResult(
             new ActivityResultContracts.StartActivityForResult(),
@@ -297,5 +256,4 @@ public class ProfileManage extends AppCompatActivity {
 
         return mime.getExtensionFromMimeType(cr.getType(uri));
     }
->>>>>>> Stashed changes
 }
