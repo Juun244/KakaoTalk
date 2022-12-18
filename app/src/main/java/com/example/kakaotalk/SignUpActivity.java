@@ -63,7 +63,7 @@ public class SignUpActivity extends AppCompatActivity {
                         if(task.isSuccessful()) {
                             FirebaseUser firebaseUser = mAuth.getCurrentUser();
                             Log.d("확인", String.valueOf(firebaseUser));
-                            Person newUser = new Person(email, passWord, name, tellPhone, birth, "text", email.substring(0, email.indexOf("@")));
+                            Person newUser = new Person(email, passWord, name, tellPhone, birth, "상태메시지", email.substring(0, email.indexOf("@")));
                             userDB.child(firebaseUser.getEmail().substring(0,firebaseUser.getEmail().indexOf("@"))).setValue(newUser);
                             Toast.makeText(SignUpActivity.this, "회원가입 성공", Toast.LENGTH_SHORT).show();
                             finish();

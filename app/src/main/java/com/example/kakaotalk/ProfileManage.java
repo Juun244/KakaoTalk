@@ -183,7 +183,7 @@ public class ProfileManage extends AppCompatActivity {
                 catch(InterruptedException e){
                     e.printStackTrace();
                 }
-                    //Toast.makeText(view.getContext(), "적용", Toast.LENGTH_SHORT).show();
+                Toast.makeText(view.getContext(), "프로필이 적용되었습니다.", Toast.LENGTH_SHORT).show();
             }
         });
     }
